@@ -1,10 +1,28 @@
-<% provide(:title, 'Kõik kliendid') %>
-<h1>Kõik kliendid</h1>
+<% provide(:title, 'Kliendid') %>
+<h1>Kõik Kliendid</h1>
 
-<%= will_paginate %>
-<table class="table table-bordered">
-<ul class="users">
-  <%= render @users %>
-</ul>
-<table>
-<%= will_paginate %>
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :name_cont, "Nimi sisaldab" %>
+    <%= f.text_field :name_cont %>
+  </div>
+  <div type="datetime-local">
+    <%= f.label :updated_at_gteq, "Muudetud alates" %>
+    <%= f.text_field :updated_at_gteq %>
+	<%= f.label :updated_at_lteq, "kuni" %>
+    <%= f.text_field :updated_at_lteq %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+<table class="table">
+  <tr>
+    <th><%= sort_link @search, :name, "Nimi" %></th>
+    <th><%= sort_link @search, :email, "email" %></th>
+	<th><%= sort_link @search, :created_at, "Liitunud" %></th>
+    <th><%= sort_link @search, :updated_at, "Muudetud" %></th>
+    <th></th>
+	<th></th>
+  </tr>
+<%= render @users %>
+</table>
