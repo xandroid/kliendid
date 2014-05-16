@@ -6,6 +6,10 @@
     <%= f.label :name_cont, "Nimi sisaldab" %>
     <%= f.text_field :name_cont %>
   </div>
+    <div class="field">
+    <%= f.label :aadress_cont, "Aadress sisaldab" %>
+    <%= f.text_field :aadress_cont %>
+  </div>
   <div type="datetime-local">
     <%= f.label :updated_at_gteq, "Muudetud alates" %>
     <%= f.text_field :updated_at_gteq %>
@@ -15,11 +19,11 @@
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-<table class="table">
+<table class="table table-striped">
   <tr>
     <th><%= sort_link @search, :name, "Nimi" %></th>
     <th><%= sort_link @search, :email, "email" %></th>
-	<th><%= sort_link @search, :created_at, "Liitunud" %></th>
+	<th><%= sort_link @search, :aadress, "Aadress" %></th>
     <th><%= sort_link @search, :updated_at, "Muudetud" %></th>
     <th></th>
 	<th></th>
