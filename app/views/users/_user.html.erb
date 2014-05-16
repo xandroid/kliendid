@@ -18,9 +18,17 @@
                                   data: { confirm: "Oled kindel?" } %>
   </td>
   <% end %>
-
+  
+  <% if current_user.admin? && current_user?(user) %>
+  <td>
+    -
+  </td>
+  <% end %>
 
   <% if current_user.admin? %>
+  <td>
+    <%= user.admin %>
+  </td>
   <td>
     <%= link_to "Muuda", edit_user_path(user.id) %>
   </td>
