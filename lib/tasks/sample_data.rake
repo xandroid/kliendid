@@ -9,7 +9,7 @@ namespace :db do
 				 admin: true)
     99.times do |n|
       name  = Faker::Name.name
-      email = "example-#{n+1}@railstutorial.org"
+      email = "karu-#{n+1}@metsalised.ee"
       aadress  = "Lehe 26-#{n+1}, Tallinn"
 	  password  = "password"
       User.create!(name: name,
