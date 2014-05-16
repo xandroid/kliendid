@@ -6,6 +6,10 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+	  <%= @user.email %>
     </section>
+	<% if current_user.admin? %>
+      <%= link_to "Muuda andmeid", edit_user_path(@user.id) %>
+    <% end %>
   </aside>
 </div>

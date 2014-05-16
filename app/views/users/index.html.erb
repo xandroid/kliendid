@@ -1,10 +1,10 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
+<% provide(:title, 'Kõik kliendid') %>
+<h1>Kõik kliendid</h1>
 
 <%= will_paginate %>
-
+<table class="table table-bordered">
 <ul class="users">
   <%= render @users %>
 </ul>
-
+<table>
 <%= will_paginate %>

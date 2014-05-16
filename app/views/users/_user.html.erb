@@ -1,8 +1,19 @@
-<li>
-  <%= gravatar_for user %>
+<tr>
+<td>
   <%= link_to user.name, user %>
+</td>
+<td>
+  <%= user.email %>
+</td>
+<td>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+    <%= link_to "Kustuta", user, method: :delete,
+                                  data: { confirm: "Oled kindel?" } %>
   <% end %>
-</li>
+</td>
+<td>
+  <% if current_user.admin? %>
+    <%= link_to "Muuda", edit_user_path(user.id) %>
+  <% end %>
+</td>
+</tr>
