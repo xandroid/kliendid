@@ -26,8 +26,6 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'ransack'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
