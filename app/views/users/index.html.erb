@@ -10,21 +10,14 @@
     <%= f.label :aadress_cont, "Aadress sisaldab" %>
     <%= f.text_field :aadress_cont %>
   </div>
-  <div type="datetime-local">
-    <%= f.label :updated_at_gteq, "Muudetud alates" %>
-    <%= f.text_field :updated_at_gteq %>
-	<%= f.label :updated_at_lteq, "kuni" %>
-    <%= f.text_field :updated_at_lteq %>
-  </div>
-  <div class="actions"><%= f.submit "Search" %></div>
+  <div class="actions"><%= f.submit "Otsi", class: "btn btn-large btn-primary" %></div>
 <% end %>
 
 <table class="table table-striped">
   <tr>
     <th><%= sort_link @search, :name, "Nimi" %></th>
     <th><%= sort_link @search, :email, "email" %></th>
-	<th><%= sort_link @search, :aadress, "Aadress" %></th>
-    <th><%= sort_link @search, :updated_at, "Muudetud" %></th>
+	<th><%= sort_link @search, :maja, "Aadress" %></th>
 	<% if current_user.admin? %>
       <th>Kustuta</th>
 	  <th><%= sort_link @search, :admin, "Admin?" %></th></th>

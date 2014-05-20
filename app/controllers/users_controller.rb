@@ -2,8 +2,19 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+
   def show
     @user = User.find(params[:id])
+	unless @user.aadresses.first.nil?
+	  @def = @user.aadresses.first.maja + ", " + @user.aadresses.first.linn
+	  @user.update_attribute(:aadress, @def)
+	end
+	if @user.aadresses.first.nil?
+	  @user.update_attribute(:aadress, '')
+	end
+	@aadresses = @user.aadresses.paginate(page: params[:page])
+	@aadress = @user.aadresses.build if signed_in?
+	
   end
   
   def new
@@ -12,8 +23,7 @@ class UsersController < ApplicationController
   
   def index
     @search = User.search(params[:q])
-	@users = @search.result
-	
+    @users = @search.result
   end
   
   def destroy
@@ -54,12 +64,6 @@ class UsersController < ApplicationController
 	
 	# Before filters
 
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

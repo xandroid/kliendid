@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:aadresses) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -105,5 +106,27 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+  describe "aadress associations" do
+
+    before { @user.save }
+    let!(:older_aadress) do
+      FactoryGirl.create(:aadress, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_aadress) do
+      FactoryGirl.create(:aadress, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right aadress in the right order" do
+      expect(@user.aadresses.to_a).to eq [newer_aadress, older_aadress]
+    end
+	it "should destroy associated aadress" do
+      aadresses = @user.aadresses.to_a
+      @user.destroy
+      expect(aadresses).not_to be_empty
+      aadresses.each do |aadress|
+        expect(Aadress.where(id: aadress.id)).to be_empty
+      end
+    end
   end
 end

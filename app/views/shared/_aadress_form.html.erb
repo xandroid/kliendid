@@ -1,0 +1,9 @@
+<%= form_for(@aadress) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :maja, placeholder: "Tänav-maja number" %>
+	<%= f.text_field :linn, placeholder: "Linn" %>
+	
+  </div>
+  <%= f.submit "Lisa aadress", class: "btn btn-large btn-primary" %>
+<% end %>

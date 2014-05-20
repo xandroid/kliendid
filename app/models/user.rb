@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+    has_many :aadresses, dependent: :destroy
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 	validates :name, presence: true, length: { maximum: 50 }
@@ -6,6 +7,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	has_secure_password
     validates :password, length: { minimum: 6 }
+	accepts_nested_attributes_for :aadresses, allow_destroy: true
 	def User.new_remember_token
       SecureRandom.urlsafe_base64
     end
@@ -13,6 +15,10 @@ class User < ActiveRecord::Base
     def User.digest(token)
       Digest::SHA1.hexdigest(token.to_s)
     end
+	
+  searchable do
+    text :name
+  end
 
     private
 

@@ -17,6 +17,12 @@ namespace :db do
 				   aadress: aadress,
                    password: password,
                    password_confirmation: password)
+	end
+	users = User.all()
+    3.times do |n|
+      maja = "Lehe 26-#{n+1}"
+	  linn = "Metsaküla"
+      users.each { |user| user.aadresses.create!(maja: maja, linn: linn) }
     end
   end
 end

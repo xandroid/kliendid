@@ -1,12 +1,18 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:name)  { |n| "Person #{n}" }
-    sequence(:email) { |n| "person_#{n}@example.com"}
-	sequence(:aadress) { |n| "Lehe tänav _#{n} Tallinn"}
+    sequence(:name)  { |n| "Karu #{n}" }
+    sequence(:email) { |n| "karu_#{n}@metsalised.ee"}
     password "foobar"
     password_confirmation "foobar"
+
     factory :admin do
       admin true
     end
+  end
+
+  factory :aadress do
+    maja "Kase 12"
+	linn "Metsaküla"
+    user
   end
 end

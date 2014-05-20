@@ -5,11 +5,8 @@
 <td>
   <%= user.email %>
 </td>
-<td type="datetime-local">
-  <%= user.aadress %>
-</td>
 <td>
-  <%= user.updated_at %>
+  <%= user.aadress %>
 </td>
 
   <% if current_user.admin? && !current_user?(user) %>
