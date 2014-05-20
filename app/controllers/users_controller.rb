@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+	save_user(@user)
 	unless @user.aadresses.first.nil?
 	  @def = @user.aadresses.first.maja + ", " + @user.aadresses.first.linn
 	  @user.update_attribute(:aadress, @def)

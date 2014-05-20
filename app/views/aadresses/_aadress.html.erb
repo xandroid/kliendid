@@ -1,5 +1,5 @@
 <li>
-  <span class="content"><%= aadress.maja %>, <%= aadress.linn %> <% if current_user?(aadress.user) %> | 
+  <span class="content"><%= aadress.maja %>, <%= aadress.linn %> <% if current_user?(aadress.user) || current_user.admin? %> | 
     <%= link_to "Kustuta", aadress, method: :delete,
                                      data: { confirm: "Oled kindel?" } %> |
   <% end %></span>

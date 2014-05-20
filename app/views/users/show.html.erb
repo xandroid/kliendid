@@ -12,7 +12,7 @@
       <%= link_to "Muuda andmeid", edit_user_path(@user.id) %>
     <% end %>
   </aside>
-  <% if current_user?(@user) %>
+  <% if current_user?(@user) || current_user.admin? %>
     <div class="row">
       <aside class="span4">
         <section>

@@ -17,12 +17,14 @@ module SessionsHelper
     @current_user ||= User.find_by(remember_token: remember_token)
   end
   
-  def save_user=(user)
-	@save_user = user
+  def save_user(user)
+	cookies.permanent[:user_token] = user.email
+
   end
   
-  def save_user
-	@save_user
+  def saved_user
+	user_token = User.digest(cookies[:user_token])
+	@saved_user ||= User.find_by(email: user_token)
   end
   
   def current_user?(user)
