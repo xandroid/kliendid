@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   
   def index
     @search = User.search(params[:q])
-    @users = @search.result
+    @users = @search.result.order('updated_at DESC')
   end
   
   def destroy
