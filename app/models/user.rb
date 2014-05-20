@@ -15,10 +15,6 @@ class User < ActiveRecord::Base
     def User.digest(token)
       Digest::SHA1.hexdigest(token.to_s)
     end
-	
-  searchable do
-    text :name
-  end
 
     private
 

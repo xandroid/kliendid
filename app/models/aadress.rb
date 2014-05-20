@@ -4,9 +4,4 @@ class Aadress < ActiveRecord::Base
   validates :maja, presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
   
-  searchable do
-    text :maja
-	text :linn
-	text(:user_name) { user.name }
-  end
 end
