@@ -1,4 +1,14 @@
 <% provide(:title, @user.name) %>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("section1").hide();
+  $("#show").click(function(){
+    $("section1").show();
+  });
+});
+</script>
 <div class="row">
   <aside class="span4">
     <section>
@@ -24,10 +34,13 @@
   <div class="span8">
     <% if @user.aadresses.any? %>
 	  <h3>Aadresse: <%= @user.aadresses.count %></h3>
-      <ol class="aadresses">
+	  <button id="show", class='btn btn-info'>Näita aadresse</button>
+      <section1>
+	  <ol class="aadresses">
         <%= render @aadresses %>
       </ol>
 	  <%= will_paginate @aadresses %>
+	  	  </section1>
     <% end %>
   </div>
 </div>
